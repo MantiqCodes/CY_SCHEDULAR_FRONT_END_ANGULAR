@@ -1,0 +1,125 @@
+<div class="pd15 " [style.margin-top]="isRowLayout?'25px':'0px'">
+
+
+  <div class="container">
+    <div class="row row-md-12 " *ngIf="isRowLayout">
+      <form [formGroup]="formGroup">
+
+      <div class="row row-md-6" *ngIf="avList">
+       
+          <!-- {{avList[0].startTime|date:"yyyy-MM-dd"}} -->
+          <div class="col-md-3">
+
+          <small>
+            <mat-form-field  appearence="fill" *ngIf="!isEditMode">
+              <mat-label>Choose a date</mat-label>
+              <input 
+              matInput 
+              [matDatepicker]="picker" 
+              (focus)="picker.open()" 
+              formControlName="pickedDate"
+              name="dateInput"
+              [(ngModel)]="dateValue" 
+              style="color:rgb(34, 0, 255);"   
+              >
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker ></mat-datepicker>
+            </mat-form-field>
+          
+          </small>
+         </div>
+         <div class="col-md-3">
+
+            <!-- <input  type="text" [min]="00" [max]="59" value="00" class="form-control"  name="second"
+              placeholder="User ID" formControlName="userId" (change)="$event.stopPropagation()"> -->
+    
+              <mat-form-field>
+                <mat-label>User ID </mat-label>
+                <input 
+                type="number" 
+                [min]="1"  
+                value="1" 
+                class="form-control" 
+                matInput 
+                name="hour" 
+                placeholder="User ID "  
+                formControlName="userId" 
+                (change)="$event.stopPropagation()"
+                [(ngModel)]="ngUserId"  
+                  >
+              </mat-form-field>
+            
+      
+            </div>
+         <div class="col-md-3 " >
+
+          <button 
+          class="btn btn-primary" 
+          type="submit" 
+          (click)="getData()"
+          >Search</button>
+         </div>
+
+      </div>
+    </form>
+
+    </div>
+    <div class="row row-md-12 " style="margin-top: 25px;" *ngIf="isRowLayout">
+      <div class="col col-md-6" *ngIf="avList">{{avList[0].startTime|date:"yyyy-MM-dd"}}</div>
+      <div class=" col-md-6 col-float-right" *ngIf="avList">
+        <button class="btn btn-primary mg-3" [attr.diabled]="true"
+        style="background-color: #FFFFFF; color: #000; font-size: 12px; width: 200px;">User ID:{{avList[0].gskUsersDTO.id}}</button>
+      <input href="#" class="btn btn-primary mg-3" [attr.diabled]="true"
+            style="background-color: #FFFFFF; color: #000; font-size: 12px; width: 235px;" [value]="avList[0].gskUsersDTO.email">
+      </div>
+    </div>
+    <div class="row row-md-12 pd-5">
+
+      <div class="row " style="width:100%;">
+        <div [class.row]="isRowLayout" style="width:100%;">
+
+          <ng-container *ngFor="let p of avList; let i = index">
+            <div class="col mg-5">
+              <div class="card  " style="width: 18rem;">
+                <div class="car-body pd-5 crd pdt-10 ">
+                  <!-- <h6 class="card-title">What: {{p.title}}</h6>
+            <div class="card-body">With: {{p.email}}</div> -->
+                  <div class="form-group">
+                    <small>Schedule Date:</small>
+                    <input type="text" class="form-control" [attr.disabled]="true"
+                      [value]="p.startTime.substring(0,p.startTime.indexOf(' '))">
+                  </div>
+                  <div class="form-group pd-5">
+                    <small>When:</small>
+                    <input type="text" class="form-control mg-3" [attr.disabled]="true"
+                      [value]="p.startTime.substring(p.startTime.indexOf(' '),p.startTime.length)">
+                    <small>To</small>
+                    <input type="text" class="form-control mg-3" [attr.disabled]="true"
+                      [value]="p.endTime.substring(p.endTime.indexOf(' '),p.endTime.length)">
+                  </div>
+
+                  <!-- <div class="card-text" style="margin-top: 10px; margin-bottom: 10px;">
+              When: {{p.startTime.substring(p.startTime.indexOf(' '),p.startTime.length)}}
+              to  {{p.endTime.substring(p.endTime.indexOf(' '),p.endTime.length)}}
+            </div> -->
+
+
+                  <div class="pd-5 ">
+                    <button href="#" class="btn btn-primary mg-3" (click)="delete(p.id)">Delete</button>
+                    <button href="#" class="btn btn-primary mg-3" (click)="edit(p.id)">Modify</button>
+                    <button href="#" class="btn btn-primary mg-3" (click)="confirm(p)">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

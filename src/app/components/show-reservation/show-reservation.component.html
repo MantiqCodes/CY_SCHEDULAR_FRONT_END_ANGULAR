@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row " style="width:100%;margin-top: 45px;">
+    <div class="row row-md-12 ">
+      <div class="row row-md-12 font-title">
+      New Reservation
+      </div>
+
+      <div class=" row-md-9 " style="width:75%; padding-right: 0px;">
+        <create-reservation (change)="catchReservatonCreatedNotification($event)"></create-reservation>
+      </div>
+      <div class="row-md-3  meida avatar-right vscrol" style="width: 10%; height: 30px; ">
+        <div class="pd15 font-title" style="margin-top: -27px;">
+          History
+        </div>
+        <reservation [showRowLayout]="false" [refreshRsvComponent]="notifyReservationCreated"></reservation>
+        <!-- <a href="#" style="width:inherit;text-align:  end;">
+        <img class="media-object avatar " src="/assets/img_avatar.png" />
+      </a> -->
+
+      </div>
+    </div>
+  </div>
+</div>

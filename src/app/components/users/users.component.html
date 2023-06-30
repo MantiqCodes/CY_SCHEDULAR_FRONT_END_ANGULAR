@@ -1,0 +1,71 @@
+<div class="pd15  " style="margin-top: 45px;">
+
+  <div class="container">
+    <div class="row row-md-12 " *ngIf="userList">
+      <div class="row row-md-6 font-title" style="width: 90%;">
+        Users
+
+      </div>
+      <div class="row row-md-3 font-12" style="width: 10%;" > Count: {{userList.length}}</div>
+    </div>
+    <div class="row row-md-12">
+      <div [class.row]="true" style="margin-top: 19px;">
+        <ng-container *ngFor="let p of userList; let i = index">
+          <div class="col mg-5">
+            <div class="card " style="width: 18rem;">
+              <div class="card-body pd-5 crd font-12">
+
+                <!-- <h6 class="card-title">Name:{{p.firstName}} {{p.lastName}}</h6>
+            <h6 class="card-title">Id :{{p.id}}  </h6>
+            <div class="card-text">Email : {{p.email}}</div>
+            <div class="card-text">Created on : {{p.dateEntered}}</div>
+             <div>Active:{{p.isActive}}</div>
+             -->
+                <div class="form-group">
+                  <small>ID</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.id">
+                </div>
+                <div class="form-group">
+                  <small class="">Name</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12"
+                    [value]="p.firstName+' '+p.lastName">
+                </div>
+                <div class="form-group">
+                  <small class="">Email</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.email">
+                </div>
+                <div class="form-group">
+                  <small class="">Is Active:</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.isActive">
+                </div>
+                <div *ngIf="SERVICE_MODE==='MONGO'" class="form-group">
+                  <small class="">Availability Count:</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.availCount">
+                </div>
+                <div *ngIf="SERVICE_MODE==='MONGO'" class="form-group">
+                  <small class="">Reservation Count:</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.reservCount">
+                </div>
+
+                <div class="form-group">
+                  <small class="">Created On :</small>
+                  <input [attr.disabled]="true" type="text" class="form-control font-12" [value]="p.dateEntered">
+                </div>
+
+                <div class="pd-5 ">
+                  <!-- <button *ngIf="SERVICE_MODE==='JPA'" href="#" class="btn btn-primary mg-3" (click)="deleteUser(p.id)">Delete</button> -->
+                  <button *ngIf="SERVICE_MODE==='MONGO'" href="#" class="btn btn-primary mg-3 font-12"
+                    (click)="deleteUser(p.id)" [class.disabled]="p.availCount>0&&p.reservCount>0">
+                    Delete</button>
+                  <button href="#" class="btn btn-primary mg-3 font-12" (click)="broadCastUserId(p.id)">Select</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(i+1)%3===0" class="w-100"></div>
+
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

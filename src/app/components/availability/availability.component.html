@@ -1,0 +1,65 @@
+<div class="pd15 " [style.margin-top]="isRowLayout?'45px':'0px'">
+
+
+  <div class="container">
+    <div class="row row-md-12 " *ngIf="isRowLayout">
+      <div class="row row-md-6 font-title" *ngIf="avList" style="width: 50%;">
+<span >Availability</span>
+
+      </div>
+      <div *ngIf="loggedInUser.id!==selectedUserId" class="row row-md-3 font-12" style="width: 20%;"> loggedIn user id : {{loggedInUser.id}}</div>
+      <div class="row row-md-3 font-12" style="width: 10%;" *ngIf="avList"> Count: {{avList.length}}</div>
+
+      <div class="row row-md-3 font-12"  *ngIf="avList" [style.width]="loggedInUser.id===selectedUserId? '40%' : '20%' "> Availability of user : {{selectedUserId}}</div>
+      
+
+    </div>
+    <div class="row row-md-12 pd-5 font-12" style="margin-top: 12px;">
+
+      <div class="row " style="width:100%;">
+        <div [class.row]="isRowLayout" style="width:100%;">
+
+          <ng-container *ngFor="let p of avList; let i = index">
+            <div class="col mg-5">
+              <div class="card  " style="width: 20rem;">
+                <div class="car-body pd-5 crd pdt-10 ">
+                  <div class="form-group">
+                    <small>Schedule Date:</small>
+                    <input type="text" class="form-control font-12" [attr.disabled]="true"
+                      [value]="p.startTime.substring(0,p.startTime.indexOf(' '))">
+                  </div>
+                  <div class="form-group pd-5">
+                    <small>When:</small>
+                    <input type="text" class="form-control font-12 " [attr.disabled]="true"
+                      [value]="p.startTime.substring(p.startTime.indexOf(' '),p.startTime.length)">
+                    <small>To</small>
+                    <input type="text" class="form-control font-12 " [attr.disabled]="true"
+                      [value]="p.endTime.substring(p.endTime.indexOf(' '),p.endTime.length)">
+                  </div>
+
+                  <!-- <div class="card-text" style="margin-top: 10px; margin-bottom: 10px;">
+              When: {{p.startTime.substring(p.startTime.indexOf(' '),p.startTime.length)}}
+              to  {{p.endTime.substring(p.endTime.indexOf(' '),p.endTime.length)}}
+            </div> -->
+
+
+                  <div class="pd-5 ">
+                    <button href="#" class="btn btn-primary mg-3 font-12"  (click)="delete(p.id)" *ngIf="this.loggedInUser.id===selectedUserId">Delete</button>
+                    <!-- <button href="#" class="btn btn-primary mg-3 font-12" (click)="edit(p.id)">Modify</button> -->
+                    <button href="#" class="btn btn-primary mg-3 font-12" (click)="confirm(p)">Reserve</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="(i+1)%3===0" class="w-100"></div>
+
+          </ng-container>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

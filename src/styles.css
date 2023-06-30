@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files 
+purple-green
+*/
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.pd15
+{
+    margin-left: 30px;
+    margin-top: 15px;
+}
+.mgl20
+{
+    margin-left: 20px;
+}
+.marg10
+{
+    margin: 10px;
+}
+.crd
+{
+    border: 2px solid beige ;
+}
+.pd10
+{
+    padding: 10px;
+}
+.mg-3
+{
+    margin: 2px;
+    height: 35px;
+    width: fit-content;
+    text-align: center;
+    
+}
+.pd-3
+{
+    padding:3px;
+}
+.pd-5
+{
+    padding: 5px;
+}
+.mg-5
+{
+    margin-top: 5px;
+
+}
+.mg-10
+{
+    margin-top: 10px;
+
+}
+.pdt-10
+{
+    padding: 10px;
+}
+
+body{
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+      
+}
+.newForm{
+   
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 5px;
+}
+
+.md-datepicker-input-container {
+    width: 100px!important;
+    height: 100px;
+}
+.w-100
+{margin-top: 12px;}
+.nav-bar-text
+{
+color: rgb(255, 255, 255);
+font-family: 'Courier New', Courier, monospace;
+font-size: x-small;
+font-weight: lighter;
+}
+
+.font-12
+{
+    font-size: 12px;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+}
+.font-title
+{
+    font-size: 18px;
+    font-weight: 100;
+    
+
+    
+}

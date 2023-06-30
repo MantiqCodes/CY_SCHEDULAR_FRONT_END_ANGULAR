@@ -1,0 +1,56 @@
+<div class="newForm" style="margin-top: 65px;">
+  <form [formGroup]="userFormGroup">
+
+    <small for="userId">Auto Id  <label>
+      <input type="checkbox" [checked]="true" name ="isEnabled" formControlName="isEnabled" [(ngModel)]="isEnabled"
+          (change)="isEnabledIdInput($event)">
+      </label>
+    </small>
+   
+    <div class="form-group" *ngIf="isEditMode">
+      <small for="userId">User Id <label></label>
+      </small>
+      <input formControlName="userId" type="text" class="form-control " [attr.disabled]="enterIdManually" id="userId"
+        placeholder="User ID ">
+    </div>
+    <!-- <div class="form-group">
+      <small for="firstName">First name</small>
+      <input fromControlName="firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+    </div> -->
+
+    <div class="form-group">
+      <small for="firstName">Last name</small>
+      <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="first Name">
+    </div>
+
+    <div class="form-group">
+      <small for="lastName">Last name</small>
+      <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Last name">
+    </div>
+
+    <div class="form-group">
+      <small class="" for="email">Email address</small>
+      <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+        placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">You will receive a verification code by this eamil.</small>
+    </div>
+    <!-- <div class="form-group">
+      <small class="" for="phoneNumber">Phone Number</small>
+      <input fromControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Phone number">
+    </div> -->
+
+
+    <div class="form-group">
+      <small for="phoneNumber">Last name</small>
+      <input formControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+    </div>
+
+
+    <div class="form-group form-check">
+      <label><input type="checkbox" [checked]="true" formControlName="isActive" (change)="showCheckBox($event)">isActive
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="saveUser()">Save</button>
+  </form>
+
+</div>

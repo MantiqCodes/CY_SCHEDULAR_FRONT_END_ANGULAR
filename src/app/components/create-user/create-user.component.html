@@ -1,0 +1,84 @@
+<div class="container newForm ">
+  <div class="row " style="width:100%;margin-top: 45px;">
+    <div class="row row-md-12 font-title">
+     <span *ngIf="!user"> Registration</span>
+     <span *ngIf="user&&user.role==='ROLE_ADMIN'">New User</span>
+    </div>
+      <div class="row row-md-12 font-12" style="margin-top: 15px;">
+        
+      <div class=" row-md-9 " style="width:60%; padding-right: 0px;">
+        <form [formGroup]="userFormGroup">
+
+          <div class="form-group font-12 mg-10" *ngIf="isEditMode">
+            <small for="userId">userId</small>
+            <input formControlName="userId" type="text" class="form-control font-12" [attr.disabled]="true" id="userId"
+              placeholder="User ID ">
+          </div>
+          <!-- <div class="form-group font-12">
+              <small for="firstName">First name</small>
+              <input fromControlName="firstName" type="text" class="form-control font-12" id="firstName" placeholder="First Name">
+            </div> -->
+
+          <div class="form-group font-12 mg-10">
+            <small for="firstName">First name</small>
+            <input formControlName="firstName" type="text" class="form-control font-12" id="firstName" placeholder="first Name">
+          </div>
+
+          <div class="form-group font-12 mg-10">
+            <small  for="lastName">Last name</small>
+            <input formControlName="lastName" type="text" class="form-control font-12" id="lastName" placeholder="Last name">
+          </div>
+
+          <div class="form-group font-12 mg-10">
+            <small class="" for="email">Email </small>
+            <input formControlName="email" type="email" class="form-control font-12" id="email" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" style="font-size: 10px;" class="form-text text-muted x-small">You will receive a verification code by this
+              eamil.</small>
+          </div>
+          <div class="input-grup form-group font-12 mg-10">
+            <small class="" for="email">Password</small>
+            <input formControlName="email" type="password" class="form-control font-12" id="password" 
+              placeholder="Password">
+             
+        </div>
+          <!-- <div class="form-group font-12">
+              <small class="" for="phoneNumber">Phone Number</small>
+              <input fromControlName="phoneNumber" type="text" class="form-control font-12" id="phoneNumber" placeholder="Phone number">
+            </div> -->
+
+
+          <div class="form-group font-12 mg-10">
+            <small for="phoneNumber">Phone Number</small>
+            <input formControlName="phoneNumber" type="text" class="form-control font-12 " id="phoneNumber"
+              placeholder="Phone Number">
+          </div>
+
+
+          <div class="form-group font-12 form-check mg-10">
+            <div class="mgl20">
+              <label class="font-12"><input type="checkbox" class="form-check-input active font-12" [checked]="true" formControlName="isActive"
+                (change)="showCheckBox($event)">isActive
+            </label>
+            </div>
+            <div class="mgl20 mg-10">
+              <label class="font-12"><input type="checkbox" class="form-check-input active font-12 " [checked]="false" formControlName="isAdmin"
+                (change)="showRole($event)">isAdmin
+            </label>
+    
+            </div>
+                </div>
+          <button type="submit" class="btn btn-primary font-12 mg-10" (click)="saveUser()">Save</button>
+        </form>
+
+      </div>
+      <div class="row-md-3  meida avatar-right vscrol" style="width: 10%; height: 30px;">
+        <!-- <reservation [showRowLayout]="false" [refreshRsvComponent]="notifyReservationCreated"></reservation> -->
+        <a href="#" style="width:inherit;text-align:  end;">
+          <img class="media-object avatar " src="/assets/img_avatar.png" width="300px" style="margin-left: 100px"/>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>

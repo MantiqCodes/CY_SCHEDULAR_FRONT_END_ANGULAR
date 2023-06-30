@@ -1,0 +1,31 @@
+<div class="container " >
+<div class="row " style="width:100%;margin-top: 45px;">
+  <div class="row row-md-12 font-title">
+    <div class=" row-md-9 " style="width: 65%">
+    New Availabity
+  </div>
+  <div class="row-md-3 " style="width: 25%;">
+    History
+
+    </div>
+  </div>
+    <div class="row row-md-12">
+      <div class=" row-md-9 " style="width:60%; padding-right: 0px;">
+     <create-availability 
+     (change)="saveNewAvl($event)"
+     
+     
+     ></create-availability>
+    </div>
+    <div class="row-md-3  meida avatar-right vscrol" style="width: 40%; height: 500px;">
+      <availability [isRowLayout]="false" [refreshAvailabilityComponent]="refreshAvailabilityComponent"></availability>
+      <!-- <a href="#" style="width:inherit;text-align:  end;">
+        <img class="media-object avatar " src="/assets/img_avatar.png" />
+      </a> -->
+
+
+    </div>
+  </div>
+</div>
+</div>
+

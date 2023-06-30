@@ -1,0 +1,50 @@
+<div class="container mg-5" style="width: 100%; height:100%;">
+  <div class="row row-md-6">
+    <div class="row-md-6 mg-5 ">
+      Cancel reservation with an email to 
+    </div>
+    <div class="row-md-6 mg-5">
+      <input 
+      type="text" 
+      [attr.disabled]="true" 
+      class="form-control" 
+      style="margin-top:30px; width:500px; font-size: 12px;" 
+      [value]="data.recipient"
+      >
+    </div>
+    <div class="row-md-6  mg-5">
+      <mat-form-field style=" width:500px; height:auto;">
+        <mat-label style=" font-size: 12px;">Subject: </mat-label>
+        <input 
+        class="form-control" 
+        matInput 
+        [(ngModel)]="data.subject"
+        [value]="data.recipient"
+        style=" font-size: 12px;"
+
+        >
+      </mat-form-field>
+    </div>
+    <div class="row-md-6 " >
+      <mat-form-field class="" style=" width:500px;">
+        <mat-label style=" font-size: 12px;">Eamil message:</mat-label>
+        <textarea 
+        matInput 
+        [(ngModel)]="data.mailBody" 
+        class="form-control"
+        style="height: 120px; font-size: 12px;"
+        [autofocus]="true"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row row-md-6 mg-5">
+      <div class="col-md-2 ">
+      <button class="btn btn-primary mg-3" [mat-dialog-close]="data">Confirm </button>
+    </div>
+
+      <div class="col-md-2 col-float-right " style=" margin-left:300px;">
+        <button class="btn btn-primary mg-3" (click)="onNoClick()">Cancel</button>
+      </div>
+  </div>
+</div>
+</div>

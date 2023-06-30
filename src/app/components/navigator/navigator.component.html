@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg" style="color:#FFFFFF;background-color:#428bca;height:45px;">
+  <!-- <nav class="navbar navbar-dark bg-primary navbar-expand-lg"> -->
+  <div class="container-fluid">
+    <div class="nav ">
+      <a class="navbar-brand" href="#" style="color:#FFFFFF !important">CY-TECH</a>
+
+    </div>
+    <div class="nav nav-tabs collapse navbar-collapse" id="navbarNav1"
+      *ngIf="(service.readLoggedInUser | async) && (service.readLoggedInUser | async).id>0"
+      style="font-family: Tahoma;font-size: 12px;height: 37px;">
+      <!-- <div class=""> style="margin-left: -300px; font-family: Tahoma;font-size: 12px;height: 37px;" -->
+      <ul class="nav nav-tabs">
+
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="avl" style="color:#FFFFFF !important">
+            Availability
+          </a>
+        </li>
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="rsv" style="color:#FFFFFF !important">
+            Reservation
+          </a>
+        </li>
+        <li routerLinkActive="nav-item active current" *ngIf="SERVICE_MODE && SERVICE_MODE==='MONGO' && user">
+          <a class="nav-link" routerLink="user" style="color:#FFFFFF !important">
+            Users
+          </a>
+        </li>
+
+
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="avl/show" style="color:#FFFFFF !important">
+            Create Availability
+          </a>
+        </li>
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="rsv/show" style="color:#FFFFFF !important">
+            Create Reservation
+          </a>
+        </li>
+
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="user/new" style="color:#FFFFFF !important">
+            Create User
+          </a>
+        </li>
+
+
+
+        <li routerLinkActive="nav-item active current">
+          <a class="nav-link" routerLink="settings" style="color:#FFFFFF !important">
+            Settings
+          </a>
+        </li>
+
+      </ul>
+      <!-- </div> -->
+    </div>
+    <div class="nav" *ngIf="service.readLoggedInUser | async">
+      <!-- <span class="nav-bar-text" *ngIf="SERVICE_MODE && SERVICE_MODE==='MONGO' && user && user.role==='ROLE_USER'">
+        USER: </span>
+      <span class="nav-bar-text" *ngIf="SERVICE_MODE && SERVICE_MODE==='MONGO' && user &&  user.role==='ROLE_ADMIN'">
+        ADMIN:</span> 
+          style="font-family: Tahoma;font-size: 12px;height: 37px; margin-left: 20px; padding: 0px;" 
+
+      -->
+      <span class="nav-bar-text" *ngIf="SERVICE_MODE && SERVICE_MODE==='MONGO' && user">
+        {{user.id}} | {{user.email}} </span>
+    </div>
+  </div>
+  <div class="nav nav-tabs collapse navbar-collapse container-fluid" *ngIf="(service.readLoggedInUser | async)===null">
+
+    <ul class="nav nav-tabs" style="font-family: Tahoma;font-size: 12px;height: 37px;">
+      <li routerLinkActive="nav-item active current">
+        <a class="nav-link" routerLink="user/new" style="color:#FFFFFF !important">
+          Registration
+        </a>
+      </li>
+
+      <li routerLinkActive="nav-item active current">
+        <a class="nav-link" routerLink="login" style="color:#FFFFFF !important">
+          Login
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="nav nav-tabs" id="navbarNav" style="font-family: Tahoma;font-size: 12px;height: 37px;">
+    <div class="collapse navbar-collapse">
+      <ul class="nav nav-tabs">
+        <li routerLinkActive="nav-item active current" style="margin-right: 50px;"
+          *ngIf="(service.readLoggedInUser | async)">
+          <a class="nav-link" routerLink="login" style="color:#FFFFFF !important" (click)="logOut()">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

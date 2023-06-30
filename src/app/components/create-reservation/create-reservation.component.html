@@ -1,0 +1,208 @@
+<div class="container row-md-12 font-12 " style="margin-top: 45px;">
+    <form [formGroup]="timePickerFormGroup">
+      <div class="row-md-12" style="margin-bottom: 15px;">
+        <div class="form-group" >
+            <small  for="title">Meeting Title</small>
+            <input 
+            type="text" 
+            formControlName="title" 
+            class="form-control font-12" 
+            id="title" 
+            placeholder="Meeting Title"
+            name="title"
+            [(ngModel)]="titleValue"
+            (change)="$event.stopPropagation()"
+
+            >
+        </div>
+        <div class="form-group mg-10">
+            <small for="email">Email</small>
+            <input 
+            formControlName="email" 
+            type="text" 
+            class="form-control font-12" 
+            id="email" 
+            aria-describedby="emailHelp"
+            placeholder="email"
+            [(ngModel)]="emailValue"
+            (change)="$event.stopPropagation()"
+            >
+            <small id="emailHelp" class="form-text text-muted  ">You will receive a verification code by this eamil.</small>
+
+        </div>
+      
+      <mat-form-field  appearence="fill" *ngIf="!isEditMode">
+          <mat-label>Choose a date</mat-label>
+          <input 
+          matInput 
+          [matDatepicker]="picker" 
+          (focus)="picker.open()" 
+          formControlName="pickedDate"
+          name="dateInput"
+          (change)="$event.stopPropagation()"
+          [(ngModel)]="dateValue"    
+          >
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+      
+    
+        <div class="form-group pd-5"*ngIf="isEditMode" >
+            <small  for="editDate">Schedule on:</small>
+            <input 
+            type="text" 
+            formControlName="editDate" 
+            class="form-control mg-5 font-12" 
+            id="editDate" 
+            placeholder="Edit Date"
+            name="editdate"
+            [(ngModel)]="editDateValue"
+            [attr.disabled]="true"
+            >
+        </div>
+    
+    </div>
+      
+   
+       <div class="row" style="margin-top: 10px;">
+        <small>
+          Start Time:
+        </small>
+        <div class="col-md-3">
+  
+          <mat-form-field>
+            <input 
+            type="number" 
+            [min]="00"
+            [max]="23"  
+            class="form-control" 
+            matInput 
+            name="xyzFromHour" 
+            placeholder="Hour (24H) "  
+            formControlName="fromHour" 
+            (change)="$event.stopPropagation()"
+            [(ngModel)]="fromHourValue"
+            style="padding: 5px;"
+            >
+          </mat-form-field>
+        </div>
+  
+  
+        <div class="col-md-3">
+          <mat-form-field>
+            <input 
+            type="number" 
+             [min]="00" 
+             [max]="59" 
+            class="form-control" 
+            matInput 
+            name="xyzFromMinute" 
+            placeholder="Minute"    
+            formControlName="fromMinute"
+            [(ngModel)]="fromMinuteValue"
+            (change)="$event.stopPropagation()"
+            style="padding: 5px;"
+              >
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <input
+             type="number" 
+             [min]="00" 
+             [max]="59"
+             class="form-control"
+             matInput
+             name="second" 
+             placeholder="second"  
+             formControlName="fromSecond"
+             [(ngModel)]="fromSecondValue"
+            (change)="$event.stopPropagation()"
+            style="padding: 5px;"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <small>
+          To Time:
+        </small>
+        <div class="col-md-3">
+  
+          <mat-form-field>
+            <input 
+            type="number"   
+            [min]="00" 
+            [max]="23" 
+            class="form-control" 
+            matInput 
+            name="hour" 
+            placeholder="Hour (24H) " 
+            formControlName="toHour"
+            [(ngModel)]="toHourValue"
+            (change)="$event.stopPropagation()"
+            style="padding: 5px;"
+              >
+          </mat-form-field>
+        </div>
+  
+  
+        <div class="col-md-3">
+          <mat-form-field>
+            <input 
+            type="number"   
+            [min]="00" 
+            [max]="59" 
+            class="form-control" 
+            matInput name="minute" 
+            placeholder="Minute" 
+              formControlName="toMinute"
+              [(ngModel)]="toMinuteValue"
+              (change)="$event.stopPropagation()"
+              style="padding: 5px;"
+              >
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <input 
+            type="number"   
+            [min]="00" 
+            [max]="59" 
+            class="form-control" 
+            matInput name="second" 
+            placeholder="second"
+            formControlName="toSecond"
+            [(ngModel)]="toSecondValue"
+            (change)="$event.stopPropagation()"
+            style="padding: 5px;" 
+               >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group form-check">
+        <input 
+        type="checkbox" 
+        formControlName="isActive"
+        [(ngModel)]="isActiveValue" 
+        class="form-check-input active" 
+        [checked]="true"  
+        id="isActive" 
+        (change)="$event.stopPropagation()"
+            >
+        <small class="form-text" class="form-check-label" style="margin-top: 10px;" for="isActive">isActive</small>
+    </div> 
+    <button type="submit" class="btn btn-primary font-12" (click)="saveAvl()"  style="margin-top: 10px;" >Save</button>
+  
+    </form>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
